@@ -1,0 +1,70 @@
+.body {
+	margin:0px;
+	width:100%;
+}
+.vertical-align {
+  display: flex; 
+}
+
+.columns {
+	 border-radius: 6px;
+	 padding: 2px;
+	 border: 2px solid #73AD21;
+	 display: flex;
+	 box-shadow: inset 1px -1px 1px #444 , inset -1px 1px 1px #444;
+}
+.colorBox {
+	border-radius: 6px;
+	border: 1px solid #FFFFFF;
+	padding:1px;
+	height: inherit;
+    width: inherit;
+	
+}
+.fit {
+	max-height:200px;
+	max-width:200px;
+}
+.allParcels {
+	width:100%;
+	padding:10px;
+	max-height:350px;
+	overflow-y:scroll;
+}
+.itemBox {
+	 width:100%;
+	 border-radius: 6px;
+	 padding: 2px;
+	 border: 1px solid #87D37C;
+}
+.apiHits {
+	align-self:flex-end;
+	width:50%;
+	border-right: thick solid #87D37C;
+}
+.flexEnd {
+	width:50%;
+	align-self:flex-end;
+}
+.item {
+	float : left;
+}
+.widthHundred {
+	width:100%;
+}
+.price {
+	float : right;
+}
+.panel {
+	width:100%;
+}
+.itemDetails {
+	width:100%;
+	margin:10px;
+}
+.table {
+	margin:0px;
+}
+.lessPadding {
+	padding:1px;
+}

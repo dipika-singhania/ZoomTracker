@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Zoomcar Tracking System</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <!--js controllers -->
+  
+  <link rel="stylesheet" type="text/css" href="resources\content\style.css">
+</head>
+<body>
+<script src="js\modules\clientModule.js"/></script>
+<script src="js\controllers\ApiHitCtrl.js"></script>
+<script src="js\controllers\ParcelCtrl.js"/></script>
+
+<div class="container" ng-app="myApp" ng-controller="apiHitCtrl">
+	<h3>
+		<div class="row vertical-align">
+			<div class="col-sm-6 columns">
+				<img src="resources\img\Capture.png" class="logoImg" alt="Zoomcar Tracking"/>
+			</div>
+			<div class="col-sm-6 columns">
+				<p class="apiHits text-center">
+					API hits : {{ api_hits }}
+				</p>
+				<p class="flexEnd  text-center">
+					Total Parcels : {{ parcels.length }}
+				</p>
+			</div>
+		</div>
+	</h3>
+	<div class="row  vertical-align">
+		<div class="col-sm-6 columns">
+			<div class="widthHundred">
+				<div class="panel panel-default">
+					<div class="panel-body price">
+						<span><i class="fa fa-search"></i></span>
+						<span><input type="text" ng-model="search"/></span>
+					</div>
+				</div>
+				<div class="allParcels">
+					<div ng-repeat="parcel in parcels | filter:search | orderBy:selectedSort">
+						<div class="panel panel-default">
+						  <div class="panel-body" ng-click="showItemDetails(parcel)">
+							<div class="item">
+								<span><i class="fa fa-asterisk"></i></span>
+								<span>
+									{{ parcel.name }}
+								</span>
+							</div>
+							<div class="price">
+								<span><i class="fa fa-inr"></i></span>
+								<span>
+									{{ parcel.price }}
+								</span>
+								<span class="glyphicon glyphicon-chevron-right"></span>
+							</div>
+						  </div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body price">
+						<button ng-click='changeValue("price")'> Sort by Value </button>
+						<button ng-click='changeValue("weight")'> Sort by Weigth </button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 columns">
+			<div class="panel panel-default itemDetails">
+			  <div class="panel-body" ng-show="showDetails">
+				<div class="row pictureItemDetails">
+					<div class="col-sm-6">
+						<div class="panel panel-default">
+							<div class="panel-body lessPadding">
+								<table class="table">
+									<tr>
+										<td>
+											<img alt="img" class="fit" id="itemPic"/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span><i class="fa fa-calendar"></i></span>
+											<span> {{ selectedDate }} </span>
+											<span> &nbsp&nbsp --ETA </span>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="panel panel-default">
+							<div class="panel-head text-center">
+								{{ selectedItem.name }}
+							</div>
+							<div class="panel-body lessPadding">
+								<table class="table">
+								<tr>
+									<td>
+										<span><i class="fa fa-cart-plus"></i></span>
+										<span> {{selectedItem.type }} </span>
+									</td>
+									<td>
+										<span><i class="fa fa-inr"></i></span>
+										<span> {{selectedItem.price }} </span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span><i class="glyphicon glyphicon-scale"></i></span>
+										<span> {{selectedItem.weight }} </span>
+									</td>
+									<td>
+										<span><i class="fa fa-database"></i></span>
+										<span> {{selectedItem.quantity }} </span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span><i class="fa fa-phone"></i></span>
+										<span> {{selectedItem.phone }} </span>
+									</td>
+									<td>
+										<span><div class="colorBox">color</div></span>
+									</td>
+								</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="panel panel-default">
+							<div class="panel-body text-center">
+								Current Location in Google Maps
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12" ng-show="showDetails">
+						<div class="panel panel-default">
+							<div class="panel-body text-center map_canvas fit">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			  </div>
+			</div>			
+		</div>
+	</div>
+	
+</div>
+
+</body>
+</html>
