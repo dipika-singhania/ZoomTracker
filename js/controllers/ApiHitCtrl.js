@@ -36,7 +36,7 @@ angular.module('myApp').controller('apiHitCtrl', function($scope,$http) {
 		
 		$http.get("https://maps.googleapis.com/maps/api/js?key=AIzaSyDkeD8N_2Ok-yU6qzQVEB4R69599S016Wo&sensor=false")
 		.then(function successCallback(response) {
-			map = new google.maps.Map(document.getElementById('map'), {
+			map = new google.maps.Map(document.getElementById('map_canvas'), {
 			  center: {lat: lat, lng: lng},
 			  zoom: 8
 			});
